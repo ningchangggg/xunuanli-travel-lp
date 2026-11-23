@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Cream;src:url(fonts_cream.otf)}
+:root{--paper:#FCFAF6;--paper2:#F3EEE5;--ink:#1E1B19;--text:#3E3935;--brick:#BC443C;--taupe:#8C847D;--night:#1C2633;--night2:#25324A;--line:#E2DBCF}
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:432px;background:#ddd;font-family:Cream,serif;color:var(--text);-webkit-font-smoothing:antialiased}
+b,strong,h1,h2,h3{font-weight:normal}
+section{width:432px;position:relative;overflow:hidden;background:var(--paper)}
+.eyebrow{font-size:12px;letter-spacing:.24em;color:var(--brick);text-align:center}
+.en{font-family:"Helvetica Neue",Arial,sans-serif;letter-spacing:.18em}
+h2{font-size:27px;line-height:1.38;color:var(--ink);text-align:center;letter-spacing:.06em}
+.lead{font-size:14.5px;line-height:1.85;text-align:center;color:var(--text);letter-spacing:.04em}
+.mark{background:linear-gradient(transparent 62%,rgba(188,68,60,.22) 62%)}
+/* 00 優惠條 */
+#s00{background:var(--night);color:#F3EEE5;font-size:12.5px;letter-spacing:.08em;height:38px;display:flex;align-items:center;justify-content:center;gap:10px}
+#s00 i{font-style:normal;color:#E9B9A6}
+#s00 .sep{width:1px;height:12px;background:rgba(255,255,255,.3)}
+/* 01 首屏 */
+#s01 .ph{width:432px;height:540px;background:url(img/hero.jpg) center/cover}
+#s01 .tx{position:absolute;left:0;right:0;top:40px;text-align:center}
+#s01 .tx .k{font-size:16px;color:var(--brick);letter-spacing:.12em}
+#s01 .tx h1{font-size:34px;line-height:1.3;color:var(--ink);margin-top:10px;letter-spacing:.06em}
+#s01 .tx p{font-size:14px;color:var(--text);margin-top:12px;letter-spacing:.05em}
+#s01 .band{height:46px;display:flex;align-items:center;justify-content:center;gap:16px;font-size:13.5px;color:var(--ink);border-bottom:1px solid var(--line);letter-spacing:.05em}
+#s01 .band .p{color:var(--brick);font-size:17px}
+#s01 .band .d{width:4px;height:4px;border-radius:50%;background:var(--taupe)}
+/* 02 購買區 */
+#s02{padding:22px 18px 26px;background:#fff}
+#s02 .t{font-size:16px;line-height:1.55;color:var(--ink);letter-spacing:.03em}
+#s02 .pr{margin-top:10px;display:flex;align-items:baseline;gap:10px}
+#s02 .pr .now{font-size:30px;color:var(--brick)}
+#s02 .pr .was{font-size:14px;color:var(--taupe);text-decoration:line-through}
+#s02 .pr .tag{font-size:11.5px;color:var(--brick);border:1px solid var(--brick);padding:1px 6px;border-radius:3px}
+#s02 .lab{font-size:12.5px;color:var(--taupe);margin:16px 0 8px;display:flex;justify-content:space-between}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{display:flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:18px;padding:5px 11px 5px 6px;font-size:12.5px;color:var(--ink)}
+.chip i{width:16px;height:16px;border-radius:50%;display:block}
+.chip.on{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink) inset}
+.plans{display:flex;gap:10px;width:600px}
+.plan{width:206px;flex:none;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fff;position:relative}
+.plan.on{border:1.5px solid var(--ink)}
+.plan .im{height:118px;background-size:cover;background-position:center}
+.plan .bd{padding:9px 10px 11px}
+.plan .nm{font-size:13px;color:var(--ink)}
+.plan .pp{font-size:21px;color:var(--brick);margin-top:3px}
+.plan .pp small{font-size:11px;color:var(--taupe);margin-left:4px}
+.plan ul{list-style:none;margin-top:5px;font-size:11px;line-height:1.65;color:var(--text)}
+.plan ul li:before{content:"✓ ";color:var(--brick)}
+.plan .badge{position:absolute;left:8px;top:8px;background:var(--brick);color:#fff;font-size:11px;padding:2px 8px;border-radius:3px;letter-spacing:.08em}
+.dots{display:flex;gap:5px;justify-content:center;margin:12px 0 14px}.dots i{width:5px;height:5px;border-radius:50%;background:#D5CEC3}.dots i:first-child{background:var(--ink)}
+.cart{height:46px;background:var(--night);color:#fff;font-size:15px;letter-spacing:.3em;display:flex;align-items:center;justify-content:center;border-radius:4px}
+#s02 .note{font-size:11.5px;color:var(--taupe);line-height:1.7;margin-top:10px}
+/* 03 破題：四張登機牌 */
+#s03{padding:40px 16px 36px;background:var(--paper2)}
+#s03 h2{margin-top:10px}
+#s03 .lead{margin-top:10px;margin-bottom:22px}
+.bp{background:var(--paper);border-radius:7px;box-shadow:0 6px 18px rgba(30,27,25,.12);margin-bottom:18px;overflow:hidden;position:relative}
+.bp .hd{height:30px;background:var(--ink);color:#EDE6DA;display:flex;align-items:center;justify-content:space-between;padding:0 12px;font-size:10.5px}
+.bp .hd .who{font-family:Cream;font-size:13px;letter-spacing:.14em;color:#fff}
+.bp .hd .who em{font-style:normal;color:#E9A493;margin-right:6px;font-family:"Helvetica Neue",Arial;font-size:10px;letter-spacing:.18em}
+.bp .bd{display:flex}
+.bp .ph{width:158px;min-height:198px;align-self:stretch;flex:none;background-size:cover;background-position:center}
+.bp .tx{flex:1;padding:12px 12px 12px 14px;position:relative}
+.bp .route{display:flex;align-items:flex-end;gap:6px;font-size:10px;color:var(--taupe);border-bottom:1px dashed #CFC6B8;padding-bottom:7px}
+.bp .route b{display:block;font-size:15px;color:var(--ink);letter-spacing:.06em;margin-top:2px}
+.bp .route .pl{color:var(--brick);font-size:13px;margin:0 2px 2px}
+.bp h3{font-size:18.5px;line-height:1.4;color:var(--ink);margin-top:9px;letter-spacing:.04em}
+.bp p{font-size:12.5px;line-height:1.72;margin-top:6px;color:var(--text)}
+.bp .gate{font-size:11.5px;color:var(--brick);margin-top:7px}
+.bp.r .bd{flex-direction:row-reverse}
+.bp:before,.bp:after{content:"";position:absolute;width:14px;height:14px;border-radius:50%;background:var(--paper2);top:23px}
+.bp:before{left:-7px}.bp:after{right:-7px}
+#s03 .end{text-align:center;margin-top:24px}
+#s03 .end .a{font-size:22px;color:var(--ink);letter-spacing:.08em}
+#s03 .end .b{font-size:13px;color:var(--taupe);margin-top:8px;letter-spacing:.05em}
+/* 04 數字列 */
+#s04{display:flex;padding:26px 6px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+#s04 div{flex:1;text-align:center;border-right:1px solid var(--line)}#s04 div:last-child{border:0}
+#s04 .n{font-size:26px;color:var(--ink);letter-spacing:.02em}
+#s04 .n small{font-size:13px;margin-left:2px}
+#s04 .c{font-size:11.5px;color:var(--taupe);margin-top:4px;letter-spacing:.06em}
+/* 05 內頁牆 */
+#s05{background:var(--night)}
+#s05 .w{height:600px;background:url(img/wall.jpg) center/cover}
+#s05 .cap{position:absolute;left:0;right:0;top:232px;height:136px;background:rgba(28,38,51,.88);display:flex;flex-direction:column;align-items:center;justify-content:center;border-top:1px solid rgba(255,255,255,.18);border-bottom:1px solid rgba(255,255,255,.18)}
+#s05 .cap .a{font-size:30px;color:#fff;letter-spacing:.1em}
+#s05 .cap .b{font-size:13.5px;color:#D9CFC0;margin-top:10px;letter-spacing:.08em}
+#s05 .foot{font-size:11.5px;color:#9AA6B6;padding:10px 16px 14px;letter-spacing:.05em}
+/* 06 正反面 */
+#s06{padding:40px 14px 34px}
+#s06 h2{margin-top:10px}#s06 .lead{margin-top:8px}
+.pg{margin-top:20px;position:relative}
+.pg img{width:100%;display:block;box-shadow:0 8px 22px rgba(30,27,25,.18)}
+.pg .side{font-size:12px;color:var(--brick);letter-spacing:.14em;margin-bottom:7px}
+.pins{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.pins span{font-size:11.5px;color:var(--text);background:var(--paper2);border-radius:12px;padding:3px 10px}
+.pins span b{color:var(--brick);margin-right:4px}
+/* 全幅一句話 */
+.full .ph{width:432px;height:540px;background-size:cover;background-position:center}
+.full .tx{position:absolute;left:22px;right:22px}
+.full .tx .a{font-size:26px;line-height:1.42;letter-spacing:.06em}
+.full .tx .b{font-size:13.5px;line-height:1.75;margin-top:8px;letter-spacing:.04em}
+#s07 .shade{position:absolute;left:0;right:0;top:0;height:250px;background:linear-gradient(rgba(18,14,10,.62),rgba(18,14,10,.35) 60%,transparent)}
+#s07 .tx{top:30px;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.45)}
+#s07 .tx .b{color:#F4E9DA}
+#s07 .tx .lab{display:inline-block;margin-top:12px;font-size:11.5px;letter-spacing:.14em;color:#fff;border:1px solid rgba(255,255,255,.7);padding:2px 9px;border-radius:12px}
+/* 08 撕頁短片 */
+#s08 .play{position:absolute;left:50%;top:50%;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;background:rgba(255,255,255,.85)}
+#s08 .play:after{content:"";position:absolute;left:26px;top:19px;border-left:20px solid var(--ink);border-top:13px solid transparent;border-bottom:13px solid transparent}
+#s08 .chipv{position:absolute;right:14px;bottom:14px;background:rgba(30,27,25,.72);color:#fff;font-size:11.5px;padding:4px 10px;border-radius:12px;letter-spacing:.06em}
+#s08 .shade{position:absolute;left:0;right:0;top:0;height:200px;background:linear-gradient(rgba(18,14,10,.5),transparent)}
+#s08 .tx{top:28px}
+#s08 .tx .a{color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.5)}
+/* 09 航班看板 */
+#s09{background:var(--night);padding:38px 16px 30px;color:#fff}
+#s09 .eyebrow{color:#E9A493}
+#s09 h2{color:#fff;margin-top:10px}
+#s09 .lead{color:#C9C1B5;margin-top:8px}
+.board{margin-top:20px;background:#121A25;border-radius:6px;padding:10px 10px 6px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+.board .h,.board .r{display:grid;grid-template-columns:58px 1fr 64px;align-items:center;gap:6px}
+.board .h{font-size:9.5px;color:#8C99AA;padding:2px 6px 8px;border-bottom:1px solid rgba(255,255,255,.08)}
+.board .r{padding:7px 6px;border-bottom:1px solid rgba(255,255,255,.06);font-size:13px}
+.board .r .d{font-family:"Helvetica Neue",Arial;font-size:13px;color:#F2C46B;letter-spacing:.08em}
+.board .r .p{color:#F3EEE5;letter-spacing:.04em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.board .r .p small{color:#9AA6B6;font-size:11px;margin-right:5px}
+.board .r .s{font-family:"Helvetica Neue",Arial;font-size:9.5px;letter-spacing:.12em;color:#7FD1A1;text-align:right}
+.board .r.on{background:rgba(188,68,60,.22)}
+.board .r.on .s{color:#FFB3A6}
+#s09 .tip{font-size:13px;color:#E9DCCB;text-align:center;margin-top:16px;letter-spacing:.06em}
+/* 10 五色 */
+#s10{padding:40px 0 32px}
+#s10 h2{margin-top:10px}#s10 .lead{margin-top:8px}
+#s10 .ph{width:432px;height:432px;background:url(img/five.jpg) center/cover;margin-top:20px}
+.sw{display:flex;justify-content:space-between;padding:16px 18px 0}
+.sw div{text-align:center;font-size:12px;color:var(--ink);width:72px}
+.sw i{display:block;width:44px;height:14px;border-radius:7px;margin:0 auto 7px}
+.sw small{display:block;font-family:"Helvetica Neue",Arial;font-size:9.5px;color:var(--taupe);letter-spacing:.12em;margin-top:2px}
+#s10 .nt{font-size:11.5px;color:var(--taupe);text-align:center;margin-top:14px}
+/* 11 規格 */
+#s11{padding:0 0 30px;background:var(--paper)}
+#s11 .ph{width:432px;height:324px;background:url(img/spec.jpg) center/cover}
+.stub{margin:-34px 16px 0;background:#fff;border-radius:7px;box-shadow:0 8px 22px rgba(30,27,25,.14);position:relative;overflow:hidden}
+.stub .hd{height:30px;background:var(--ink);color:#EDE6DA;display:flex;align-items:center;justify-content:space-between;padding:0 12px;font-size:10.5px}
+.stub .row{display:flex;padding:11px 16px;border-bottom:1px dashed #DCD3C5;font-size:13px}
+.stub .row:last-child{border:0}
+.stub .row .k{width:62px;color:var(--taupe);flex:none;letter-spacing:.1em}
+.stub .row .v{color:var(--ink);line-height:1.6}
+/* 12 轉折 */
+#s12 .tx{bottom:34px}
+#s12 .tx .a{color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.55)}
+#s12 .tx .b{color:#F3E9DC;text-shadow:0 1px 8px rgba(0,0,0,.5)}
+#s12 .shade{position:absolute;left:0;right:0;bottom:0;height:260px;background:linear-gradient(transparent,rgba(20,16,12,.55))}
+/* 13 給2027 */
+#s13{padding:34px 18px;background:var(--paper2)}
+.letter{background:#fff;border:1px solid var(--line);padding:24px 20px;position:relative}
+.letter .stamp{position:absolute;right:16px;top:14px;width:58px;height:58px;border:2px solid var(--brick);border-radius:50%;color:var(--brick);font-size:12px;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.25;transform:rotate(-8deg);opacity:.85}
+.letter .k{font-size:12px;color:var(--brick);letter-spacing:.2em}
+.letter h3{font-size:22px;color:var(--ink);margin-top:8px;line-height:1.4}
+.letter p{font-size:13px;line-height:1.8;margin-top:10px}
+.letter ol{font-size:13px;line-height:1.9;margin:8px 0 0 18px}
+/* 14 評價 */
+#s14{padding:34px 18px}
+#s14 .ph{margin-top:16px;height:150px;border:1.5px dashed #CBBFAE;background:#FBF6EC;display:flex;align-items:center;justify-content:center;text-align:center;font-size:12.5px;color:var(--taupe);line-height:1.8}
+/* 15 FAQ */
+#s15{padding:30px 18px 24px}
+#s15 h2{font-size:22px}
+.q{border-bottom:1px solid var(--line);padding:13px 0;font-size:13.5px;color:var(--ink);display:flex;justify-content:space-between}
+.q span{color:var(--taupe)}
+.ans{font-size:12.5px;line-height:1.8;color:var(--text);padding:0 0 12px;border-bottom:1px solid var(--line)}
+/* 16 底部購買列 */
+#s16{height:62px;background:#fff;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 14px}
+#s16 .p{font-size:22px;color:var(--brick)}#s16 .p small{font-size:11px;color:var(--taupe);margin-left:6px}
+#s16 .btn{background:var(--night);color:#fff;font-size:14px;letter-spacing:.2em;padding:10px 18px;border-radius:4px}
+.how{padding:34px 20px 30px;background:var(--paper2)}
+.how.alt{background:var(--paper)}
+.how .eyebrow{font-family:Helvetica,Arial,sans-serif}
+.how h2{margin-top:10px}
+.how .lead{margin-top:8px}
+.how .mv{position:relative;width:392px;height:490px;margin:20px auto 0;border-radius:8px;overflow:hidden;box-shadow:0 8px 22px rgba(30,27,25,.16)}
+.how .mv .ph{position:absolute;inset:0;background-size:cover;background-position:center}
+.how .mv .stub{position:absolute;left:0;right:0;bottom:0;height:34px;background:rgba(30,27,25,.78);color:#EDE6DA;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-size:11px;letter-spacing:.16em}
+.how .mv .stub b{font-weight:400;color:#fff;font-size:13px;letter-spacing:.1em;font-family:Cream,serif}
+.how .mv .stub .en{font-family:Helvetica,Arial,sans-serif}
+.gate.hot{display:inline-block;background:var(--brick);color:#fff;font-size:15px;letter-spacing:.12em;padding:7px 14px;border-radius:4px;margin-top:12px;box-shadow:0 2px 6px rgba(188,68,60,.28)}
+</style></head><body>
+
+<section id="s00"><span>聖誕節前到貨</span><span class="sep"></span><i>任選兩件送語錄卡</i><span class="sep"></span><span>現貨最後一批</span></section>
+
+<section id="s01">
+  <div class="ph"></div>
+  <div class="tx">
+    <div class="k">2027 旅行機票日曆</div>
+    <h1>每天一張登機牌<br>把世界放上書桌</h1>
+    <p>給愛旅行的人，也給想被記住一整年的人</p>
+  </div>
+  <div class="band"><span class="p">$998</span><span class="d"></span><span>任選兩件送語錄卡</span><span class="d"></span><span>聖誕節前到貨</span></div>
+</section>
+
+<section id="s02">
+  <div class="t">【台灣免運】2027 旅行機票日曆｜365 天環遊世界旅遊景點</div>
+  <div class="pr"><span class="now">$998</span><span class="was">$1,380</span><span class="tag">聖誕價</span></div>
+  <div class="lab"><span>底座顏色</span></div>
+  <div class="chips">
+    <span class="chip on"><i style="background:#1F2633"></i>夜航 Night</span>
+    <span class="chip"><i style="background:#C9CED3"></i>雲層 Cloud</span>
+    <span class="chip"><i style="background:#B79D80"></i>荒原 Plain</span>
+    <span class="chip"><i style="background:#9FCFD0"></i>淺灣 Lagoon</span>
+    <span class="chip"><i style="background:#2F5A3C"></i>山徑 Trail</span>
+  </div>
+  <div class="lab"><span>選一個方案</span><span>← 左右滑 →</span></div>
+  <div class="plans">
+    <div class="plan on"><div class="badge">送禮首選</div><div class="im" style="background-image:url(img/plan_two.jpg)"></div><div class="bd"><div class="nm">交換禮物雙人份｜旅行 ×2</div><div class="pp">$1,916<small>每本 $958</small></div><ul><li>一本自己留，一本拿去換</li><li>送語錄卡 1 盒（價值 $679）</li></ul></div></div>
+    <div class="plan"><div class="im" style="background-image:url(img/plan_mix.jpg)"></div><div class="bd"><div class="nm">一飛一笑｜旅行＋幹話</div><div class="pp">$1,916<small>比單買省 $80</small></div><ul><li>一本帶你飛，一本讓你笑</li><li>送語錄卡 1 盒</li></ul></div></div>
+    <div class="plan"><div class="im" style="background-image:url(img/plan_five.jpg)"></div><div class="bd"><div class="nm">辦公室包｜×5</div><div class="pp">$4,590<small>每本 $918</small></div><ul><li>五色各一，同事自己挑</li></ul></div></div>
+  </div>
+  <div class="dots"><i></i><i></i><i></i><i></i></div>
+  <div class="cart">加入購物車</div>
+  <div class="note">台灣免運，港澳滿 $1,000 免運。可跟煦暖曆系列其他實體日曆混搭計算本數（不含星座曆）。</div>
+</section>
+
+<section id="s03">
+  <div class="eyebrow">誰適合旅行機票日曆？</div>
+  <h2>聖誕禮物 x 交換禮物<br><span class="mark">送禮送到心坎裡</span></h2>
+  <div class="lead">每天撕一張登機牌，365 天，<br>每一天都是你送的那趟旅行。</div>
+
+  <div class="bp"><div class="hd"><span class="who"><em>PASSENGER 01</em>旅遊狂熱</span><span class="en">BOARDING PASS</span></div>
+    <div class="bd"><div class="ph" style="background-image:url(img/s1_trip_v17.jpg)"></div>
+    <div class="tx"><div class="route"><div>FROM<b>行李箱</b></div><span class="pl">✈</span><div>TO<b>每一天</b></div></div>
+    <h3>每天都在物色<br>下一趟旅行目的地</h3><p>365 個目的地、68 個國家與地區，撕下來就是下一趟的願望清單。</p></div></div></div>
+
+  <div class="bp r"><div class="hd"><span class="who"><em>PASSENGER 02</em>歷史迷、地理迷</span><span class="en">BOARDING PASS</span></div>
+    <div class="bd"><div class="ph" style="background-image:url(img/s2_history.jpg)"></div>
+    <div class="tx"><div class="route"><div>FROM<b>西元前</b></div><span class="pl">✈</span><div>TO<b>今天</b></div></div>
+    <h3>正面讀歷史、<br>背面學地理</h3><p>吳哥窟、明治神宮、塞哥維亞水道橋，每一頁都能學習景點歷史與地理。</p></div></div></div>
+
+  <div class="bp"><div class="hd"><span class="who"><em>PASSENGER 03</em>交換禮物</span><span class="en">BOARDING PASS</span></div>
+    <div class="bd"><div class="ph" style="background-image:url(img/s3_gift.jpg)"></div>
+    <div class="tx"><div class="route"><div>FROM<b>預算一千</b></div><span class="pl">✈</span><div>TO<b>全場搶翻</b></div></div>
+    <h3>禮物預算一千<br>送一個有記憶點的禮物</h3><p>挑交換禮物的難題，交給我們解決。</p></div></div></div>
+
+  <div class="bp r"><div class="hd"><span class="who"><em>PASSENGER 04</em>聖誕禮物</span><span class="en">BOARDING PASS</span></div>
+    <div class="bd"><div class="ph" style="background-image:url(img/s4_xmas_v16.jpg)"></div>
+    <div class="tx"><div class="route"><div>FROM<b>聖誕節</b></div><span class="pl">✈</span><div>TO<b>明年聖誕</b></div></div>
+    <h3>送一個讓人……<br>惦記一整年的禮物</h3><p>別的禮物拆完就收起來，<br>這個禮物每天都讓他想像……<br>跟你出發的每一站。</p><div class="gate hot">✈ 聖誕節前到貨</div></div></div></div>
+</section>
+
+<section id="s04">
+  <div><div class="n">365</div><div class="c">張登機牌</div></div>
+  <div><div class="n">68</div><div class="c">個國家與地區</div></div>
+  <div><div class="n">5<small>色</small></div><div class="c">底座任你挑</div></div>
+</section>
+
+<section id="s05">
+  <div class="w"></div>
+  <div class="cap"><div class="a">365 天，365 個登機口</div><div class="b">沒有一天降落在同一個地方</div></div>
+</section>
+
+<section id="s05a" class="how ">
+  <div class="eyebrow">HOW TO USE 01</div>
+  <h2>每天撕一張，<br>明天飛下一站</h2>
+  <div class="lead">撕下今天這張登機牌，<br>下一個目的地就在後面等你。</div>
+  <div class="mv"><div class="ph" data-clip="g1_tear" style="background-image:url(gif/clips/g1_tear/001.jpg)"></div>
+    <div class="stub"><span class="en">STEP 01</span><b>撕下今天</b><span class="en">BOARDING</span></div></div>
+</section>
+
+<section id="s06" data-days="1">
+  <div class="eyebrow">一頁正反，裝下一段完整旅程</div>
+  <h2>正面看風景，背面讀旅程</h2>
+  <div class="lead">1 月 10 日，飛去富士山與河口湖。</div>
+  <div class="pg"><div class="side en">FRONT ／ 正面</div><img id="pf" src="img/p010_1.jpg">
+    <div class="pins"><span><b>①</b>日期、農曆、星期</span><span><b>②</b>景點照片</span><span><b>③</b>景點故事</span></div></div>
+  <div class="pg"><div class="side en">BACK ／ 背面</div><img id="pb" src="img/p010_2.jpg">
+    <div class="pins"><span><b>④</b>延伸介紹與旅行提醒</span><span><b>⑤</b>地圖標出座標、海拔、時區</span></div></div>
+</section>
+
+<section id="s06a" class="how">
+  <div class="eyebrow">HOW TO USE 02</div>
+  <h2>翻過來，<br>告訴你在世界的何處？</h2>
+  <div class="lead">背面標出景點座標，<br>邊看邊想下一趟要飛去哪。</div>
+  <div class="mv"><div class="ph" data-clip="g2_flip" style="background-image:url(gif/clips/g2_flip/001.jpg)"></div>
+    <div class="stub"><span class="en">STEP 02</span><b>翻到背面</b><span class="en">BOARDING</span></div></div>
+</section>
+
+<section id="s07" class="full">
+  <div class="ph" data-clip="s07_tree" style="background-image:url(gif/clips/s07_tree/001.jpg)"></div><div class="shade"></div>
+  <div class="tx"><div class="a">撕下來，<br>貼成一棵會旅行的聖誕樹</div><div class="b">登機牌夾上松枝燈串，<br>一年下來，就是一整面世界。</div></div>
+</section>
+
+
+<section id="s08" class="full">
+  <div class="ph" data-clip="s08_page" style="background-image:url(gif/clips/s08_page/001.jpg)"></div><div class="shade"></div>
+  <div class="tx"><div class="a">翻開今天，<br>先看看飛去哪</div></div>
+  
+</section>
+
+<section id="s09">
+  <div class="eyebrow en">DEPARTURES</div>
+  <h2>今天飛去哪</h2>
+  <div class="lead">每天一個登機口，一年飛遍 68 個國家與地區。</div>
+  <div class="board">
+    <div class="h en"><span>DATE</span><span>DESTINATION</span><span style="text-align:right">STATUS</span></div>
+    <div class="r"><span class="d">01/01</span><span class="p"><small>澳洲</small>尖峰石陣</span><span class="s">ON TIME</span></div>
+    <div class="r"><span class="d">01/10</span><span class="p"><small>日本</small>富士山與河口湖</span><span class="s">ON TIME</span></div>
+    <div class="r"><span class="d">02/03</span><span class="p"><small>西班牙</small>塞哥維亞水道橋</span><span class="s">ON TIME</span></div>
+    <div class="r"><span class="d">03/11</span><span class="p"><small>法國</small>巴黎艾菲爾鐵塔</span><span class="s">ON TIME</span></div>
+    <div class="r"><span class="d">04/22</span><span class="p"><small>美國</small>羚羊峽谷</span><span class="s">ON TIME</span></div>
+    <div class="r"><span class="d">06/03</span><span class="p"><small>瑞士</small>策馬特馬特洪峰</span><span class="s">ON TIME</span></div>
+    <div class="r"><span class="d">06/30</span><span class="p"><small>埃及</small>階梯金字塔</span><span class="s">ON TIME</span></div>
+    <div class="r"><span class="d">09/04</span><span class="p"><small>柬埔寨</small>吳哥窟</span><span class="s">ON TIME</span></div>
+    <div class="r"><span class="d">09/23</span><span class="p"><small>加拿大</small>黃刀鎮極光</span><span class="s">ON TIME</span></div>
+    <div class="r"><span class="d">10/03</span><span class="p"><small>美國</small>黃石大稜鏡溫泉</span><span class="s">ON TIME</span></div>
+    <div class="r on"><span class="d">12/24</span><span class="p"><small>德國</small>德勒斯登聖母教堂廣場</span><span class="s">BOARDING</span></div>
+  </div>
+  <div class="tip">找一找，你生日那天飛去哪</div>
+</section>
+
+<section id="s10">
+  <div class="eyebrow">五種色系</div>
+  <h2>五種底座，放進不同的生活風景</h2>
+  <div class="lead">內頁 365 天都一樣，挑一個配他的桌子。</div>
+  <div class="ph"></div>
+  <div class="sw">
+    <div><i style="background:#1F2633"></i>夜航<small>NIGHT</small></div>
+    <div><i style="background:#C9CED3"></i>雲層<small>CLOUD</small></div>
+    <div><i style="background:#B79D80"></i>荒原<small>PLAIN</small></div>
+    <div><i style="background:#9FCFD0"></i>淺灣<small>LAGOON</small></div>
+    <div><i style="background:#2F5A3C"></i>山徑<small>TRAIL</small></div>
+  </div>
+  <div class="nt">實拍色彩依螢幕顯示略有差異</div>
+</section>
+
+<section id="s11">
+  <div class="ph"></div>
+  <div class="stub"><div class="hd"><span class="en">FLIGHT TICKET CALENDAR 2027</span><span class="en">SEAT 01A</span></div>
+    <div class="row"><span class="k">尺寸</span><span class="v">19 × 8 公分，橫式桌曆</span></div>
+    <div class="row"><span class="k">內容</span><span class="v">365 張登機牌，正面景點、背面地圖</span></div>
+    <div class="row"><span class="k">底座</span><span class="v">五種色系，地圖壓印，三角立起不用架子</span></div>
+    <div class="row"><span class="k">重量</span><span class="v">685 g（含外盒 1,070 g）</span></div>
+    <div class="row"><span class="k">加碼</span><span class="v">每本附給 2027 的自己 QR Code</span></div>
+  </div>
+</section>
+
+<section id="s12" class="full">
+  <div class="ph" style="background-image:url(img/desk.jpg)"></div><div class="shade"></div>
+  <div class="tx"><div class="a">不出發的日子，<br>也讓世界留在桌上</div><div class="b">每天翻開一段風景，<br>讓平常的一天，多一個可以期待的方向。</div></div>
+</section>
+
+<section id="s13">
+  <div class="letter"><div class="stamp">2027<br>寄出</div>
+    <div class="k">加碼再贈</div><h3>寫一封信，<br>給 2027 的自己</h3>
+    <p>每一本日曆都附一張專屬 QR Code。現在寫下想對明年說的話，我們會在你指定的那一天，用 Email 和簡訊寄給你。</p>
+    <ol><li>掃描盒內 QR Code</li><li>寫下想說的話、選一個日子</li><li>那天打開信箱，收到一年前的自己</li></ol></div>
+</section>
+
+
+<section id="s15">
+  <h2>常見問題</h2>
+  <div class="q" style="margin-top:12px">聖誕節前收得到嗎？<span>－</span></div>
+  <div class="ans">【待阿寧填：聖誕到貨截止日】前下單，台灣宅配與超商取貨都會在 12/24 前送達；之後下單請改選手機版日曆，付款後立即開通，當天就能送。</div>
+  <div class="q">不同顏色內容一樣嗎？<span>＋</span></div>
+  <div class="q">景點會重複嗎？<span>＋</span></div>
+  <div class="q">買兩本送語錄卡怎麼算？<span>＋</span></div>
+  <div class="q">可以跟其他日曆混搭團購嗎？<span>＋</span></div>
+</section>
+
+<section id="s16"><span class="p">$998<small>2 本送語錄卡</small></span><span class="btn">加入購物車</span></section>
+
+</body></html>
